@@ -1,0 +1,65 @@
+@startuml
+object "Vacina" as v {
+    cidadao
+    vacinador
+    data
+    localVacinacao
+    dose
+    tipo
+}
+object "Funcionário da Saúde" as fs {
+    nome
+}
+
+object "Vacinador" as Vac {
+    nome
+}
+
+object "Chefe de Setor" as CS {
+    nome
+}
+
+object "Vacinação" as Vacinac {
+    dia
+    doses
+}
+
+object "Doses Disponíveis" as d{
+    tipo
+    quantidade
+}
+
+object "Cidadão" as C{
+    nome
+    cpf
+    telefone
+    endereço
+    dataNascimento
+    email
+    nomeMae
+    possuiComorbidades
+    comorbidades
+}
+
+
+object "Local de Vacinação" as LV{
+    nome
+    endereco
+}
+object "Escala de Funcionário" as ef{
+    data
+    funcionario
+}
+
+C --* v : 1 toma 0..2
+Vac -> C : 1 vacina 0..*
+Vac --* v : 1 aplica 0..*
+Vac --|> fs
+Vac -> LV : 1 trabalha em 0..*
+Vac -> ef : 1 é chamadado para 0..*
+ef -> LV : 1..* acontece em 1..* 
+CS --|> fs
+v *-- LV : 1..* acontece em 1..*
+Vacinac -> d : 1..* possuem 1..* 
+CS -> Vacinac : 1..* informa 1..*
+@enduml

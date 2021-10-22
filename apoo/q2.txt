@@ -1,0 +1,37 @@
+@startuml
+
+usecase "Cadastro" as cad
+usecase "Cadastro Cidadão" as cadc
+usecase "Cadastro Funcionário" as cadf
+usecase "Vacina Cidadão" as vac
+
+usecase "Registra vacinação" as regv
+usecase "Segue instruções" as segi 
+
+
+usecase "Pré-Cadastro dos locais de vacinação" as cadlv
+usecase "Valida Funcionário" as vf
+usecase "Fornece Informações para o próximo dia" as forninf
+usecase "Escala Funcionário" as escf
+actor Vacinador
+actor "Funcionario da Saúde" as FuncS
+actor ChefeSetor
+actor Administrador
+actor Cidadão as C
+
+(cadc) .> (cad) : extends
+(cadf) .> (cad) : extends
+
+Vacinador .> FuncS : extends
+ChefeSetor .> FuncS : extends
+
+Administrador --> cadlv
+Vacinador -> cadf
+cadf -> vf
+Administrador -> vf
+ChefeSetor -> forninf
+C -> segi
+segi -> vac
+Vacinador -> vac
+Vacinador -> regv
+@enduml

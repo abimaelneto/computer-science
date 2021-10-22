@@ -1,0 +1,13 @@
+@startuml
+Pessoa -> Sistema : Informa intenção de reserva
+Sistema --> Pessoa : Exibe eventos disponíveis
+
+Pessoa -> Sistema : Seleciona evento
+loop
+    Sistema --> Pessoa : exibe lista de lugares
+    Pessoa -> Sistema : informa nome do ocupante e lugar
+    Sistema --> Pessoa :  confirma reserva e valor parcial
+
+Pessoa -> Sistema : CASO DE USO - Paga Reserva
+
+@enduml
