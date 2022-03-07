@@ -1,0 +1,7 @@
+Atores
+
+- Cidadãos
+- Administrador
+- Funcionários da saúde
+    - Vacinadores
+    - Chefes de setor

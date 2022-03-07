@@ -45,4 +45,23 @@ double complex *DFT(unsigned char *audio, int length) {
         // printf("%.1lf + %.1lfi\n", creal(coef[k]), cimag(coef[k]));
     }
     return coef;
+    
+}
+
+//reverse fourier transform
+unsigned char* RFT(double complex *data, int length) {
+    unsigned char* audio = (unsigned char*) calloc(length, sizeof(unsigned char));
+    double complex* coef = (double complex*) calloc(length, sizeof(double complex));
+
+    for (int k = 0; k < length; k++) {
+        for (int n = 0; n < length; n++) {
+            coef[k] += data[n] * cexp((2.0 * M_PI * (((k+1) * n * 1.0) / (length * 1.0))) * _Complex_I);
+        }
+        audio[k] = (unsigned char) creal( coef[k]/length );
+        // printf("%.1lf + %.1lfi\n", creal(coef[k]), cimag(coef[k]));
+    }
+
+    free(coef);
+    
+    return audio;
 }

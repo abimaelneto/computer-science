@@ -1,4 +1,4 @@
 all:
-	gcc main.c func.c -o trab2
+	gcc -g main.c func.c -lm -o trab2
 run:
 	./trab2

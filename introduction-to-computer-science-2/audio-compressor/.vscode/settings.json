@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "complex.h": "c"
+  },
+  "code-runner.executorMap": {
+    "c": "cd $dir && make all && make run"
+  }
+}

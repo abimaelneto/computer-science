@@ -9,5 +9,6 @@
 
 unsigned char* read_wav_data(char* fname);
 double complex *DFT(unsigned char *audio, int length);
+unsigned char* RFT(double complex *data, int length);
 
 #endif
